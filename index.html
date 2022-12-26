@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<script src="https://kit.fontawesome.com/dc266e04d0.js" crossorigin="anonymous"></script>
+
+<html lang = "eng"
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-wodth, initial-scale=1.0"
+        <title></title>
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+        integrity="sha256-46qynGAkLSFpVbEBog43gvNhfr0j+BmwXdxFgVK/Kvc=" crossorigin="anonymous" \>
+
+        <!-- Update with your own fonts if you want later-->
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,900|Source+Sans
+        +Pro:300,900&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+
+    </head>
+
+    <body>
+
+        <header>
+            <div class="logo">
+                <!-- <img src= "img/bvb.png" alt=""> -->
+
+            </div>
+
+            <button class="nav-toggle" aria-label="toggle navigation">
+
+                <span class="hamburger"></span>
+
+            </button>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <!-- Maybe add a place for your interest such as ML and AI. -->
+                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="#services" class="nav__link">My Services</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link">About Me</a></li>
+                    <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <!-- Introduction -->
+        <section class="intro" id="home">
+            <h1 class="section__title section__title--intro">
+                Hi, I am <u><strong>Hayk Nazaryan</strong> </u>
+            </h1>
+            <p class="section__subtitle section__subtitle--intro"> Software Developer</p>
+            <img src="img/main_photo.jpg" alt="a picture of Hayk Nazaryan" class="intro__img">
+
+        </section>
+
+
+        <!-- My services -->
+        <section class="my-services" id="services">
+
+            <h2 class="section__title section__title--services">What I do</h2>
+            <div class = "services">
+                <div class="service">
+                    <h3><u>Backend</u></h3>
+                    <p>Experienced Backend Developer in numerous languages, such as Python, Java and C. Futher experience 
+                        in Database theory and application with SQL. Worked with numerous sophisticated API, such as OpenAI and
+                        Spotify Web API.
+                    </p>
+                </div> <!-- /service -->
+
+                <div class="service">
+                    <h3><u>AI/ML</u></h3>
+                    <p>Passionately learning about Artifical Intelligence and Machine Learning. Finished online introductory course offered by Duke
+                        University for ML. Completing projects in free
+                        time in both areas, listed below. Aspire to delve into Computer Vision. 
+                    </p>
+                </div> <!-- /service -->
+
+                <div class="service">
+                    <h3><u>Frontend</u></h3>
+                    <p>Getting myself more familiar with frontend technologies by building this website from scratch! Built with HTML, CSS, and JS.</p>
+                </div> <!-- /service -->
+
+            </div>
+
+            <a href="#work" class="btn">My Work</a>
+        </section>
+
+        
+        <!-- About Me -->
+        <section class="#about-me" id="about">
+            <h2 class="section__title section__title--about"> Who I am</h2>
+            <p class="section__subtitle section__subtitle--about">A passionate coder</p>
+
+            <div class="about-me__body">
+                <p> Computer Science student attending the University of Toronto, St. George (Graduating 2024) </p>
+
+                <p> Excited by and to use cutting-egde technologies!</p>
+
+                <p> Outgoing and interpersonal individual with strengths in communication, emotional intellgence, and self-motivation. </p>
+
+                <p> My other interests include sports, music, and gaming. </p>
+            </div>
+
+            <img src="img/side_photo.jpg", class="about-me__img">
+
+        </section>
+
+        <!-- My Work -->
+        <section class="my-work" id="work">
+            <h2 class="section__title section__title--work"> My Work</h2>
+            <p class="section__subtitle section__subtitle--work"> Some projects which I completed</p>
+
+            <div class="portfolio">
+                <!-- Portfolio Item 1 -->
+                <a href="lexata.html" class="portfolio__item">
+                    <img src="img/black-Lexata.png">
+                </a>
+
+                <a href="comingsoon.html" class="portfolio__item porfolio__spotify">
+                    <img src="img/spotify.png">
+                </a>
+
+                <a href="comingsoon.html" class="portfolio__item portfolio__MonKeyPass">
+                    <img src="img/black-MonKeyPass.png">
+                </a>
+
+                <a href="comingsoon.html" class="portfolio__item portfolio__checkers">
+                    <img src="img/checkers.png">
+                </a>
+
+                <a href="comingsoon.html" class="portfolio__item portfolio__hrd">
+                    <img src="img/hrd.png">
+                </a>
+
+                <a href="comingsoon.html" class="portfolio__item portfolio__Ecoli">
+                    <img src="img/black-Ecoli.png">
+                </a>
+
+
+
+
+
+            </div>
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <a href="mailto:hayk.nazaryan@mail.utoronto.ca" class="footer__link">hayk.nazaryan@mail.utoronto.ca</a>
+            <ul class="social-list">
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://www.linkedin.com/in/hayk-nazaryan-a571651b4/">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li class="social-list__item">
+                    <a class="social-list__link" href="https://github.com/hayk-bvb">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+            </ul>
+
+
+        </footer>
+
+        <script src="js/index.js"></script>
+
+    </body>
+</html>
