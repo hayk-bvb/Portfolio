@@ -351,8 +351,8 @@ header {
     .services {
         display: flex;
         max-width: 1000px;
-        margin-left: auto;
-        margin-right: 45rem;
+        margin-left: 31.5em;
+        margin-right: 30em;
 
     }
 
