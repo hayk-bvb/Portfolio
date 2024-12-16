@@ -292,8 +292,8 @@ header {
 
     .intro__img {
         grid-area: img;
-        min-width: 250px;
-        position: relative;
+        min-width: 10px;
+        position: absolute;
         z-index: 2;
  
    }
@@ -305,7 +305,7 @@ header {
         text-align: right;
         position: relative;
         left: -1.5em;
-        width: calc(100% + 1.5em);
+        width: calc(50% + 1.5em);
    }
 }
 
@@ -375,7 +375,7 @@ header {
 
 }
 
-@media (min-width: 600px) {
+@media (min-width: 50px) {
     .about-me {
         display: grid;
         grid-template-columns: 1fr 200px;
@@ -406,8 +406,8 @@ header {
         grid-area: img;
         position: relative;
         Z-index: 2;
-        max-height: 300px;
-        max-width: 300px;
+        max-height: 50px;
+        max-width: 50px;
     }
 
 }

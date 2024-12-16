@@ -1,0 +1,352 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: 'Source Sans Pro', sans-serif;
+  --ff-secondary: 'Source Code Pro', monospace;
+
+  --fw-reg: 300;
+  --fw-bold: 900;
+
+  --clr-light: #fff;
+  --clr-dark: #303030;
+  --clr-accent: #f9A602;
+
+  --fs-h1: 3rem;
+  --fs-h2: 2.25rem;
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+
+  --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+      0.125em 0.125em 0.25em rgba(0, 0, 0, .15);
+  
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--clr-dark);
+  color: var(--clr-light);
+  margin: 0;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  background-color: black;
+
+
+}
+
+
+.section {
+  padding: 5em 2em;
+  position: relative;
+}
+
+/* 1. Flex container */
+.graphics3d {
+  display: flex; 
+  height: 100vh; 
+  width: 100vw;
+  max-width: 1000px;
+  margin: 0 auto;
+  z-index: -1;
+  /* align-items: center; */
+
+}
+
+/* 2. Left Image Section */
+/* 2. Left Image Section */
+.profile-image {
+  width: 60%; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  max-height: 500px;
+  position: relative; 
+}
+
+.profile-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%; /* Same width as the image */
+  height: 80%; /* Same height as the image */
+  border-radius: 50%; /* Ensures the border follows the circular shape */
+  background: conic-gradient(
+    from 0deg, 
+    rgba(99, 71, 255, 0.5), 
+    rgba(99, 71, 255, 0)
+  );
+  z-index: 1; 
+  pointer-events: none; /* Prevents user interaction with this pseudo-element */
+}
+
+.profile-image img {
+  width: 80%; 
+  border-radius: 50%; 
+  object-fit: cover; 
+  position: relative; 
+  z-index: 2; /* Ensures the image stays above the fading effect */
+  border: 10px solid #6347FF; /* Primary solid border */
+  box-shadow: 0 0 15px 10px rgba(99, 71, 255, 0.7); /* Glow effect */
+}
+
+/* 3. Right Content Section */
+.content {
+  width: 100%; /* Content takes 70% of container width */
+  position: relative; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  max-width: 500px;
+  margin: 0 0;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensures the canvas is behind the text */
+  max-width: 500px;
+  max-height: 500px;
+  margin: 0 0;
+  background-color: transparent !important;
+}
+
+.hero-text {
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  z-index: 1; /* Ensures the text stays on top of the canvas */
+}
+
+.new-section {
+  color: white;
+  position: relative;
+  font-size: 3rem;
+}
+
+/* Text Animation */
+.animated-text {
+  opacity: 0; 
+  transform: translateX(50px); 
+  animation: fade-in 1s ease-out forwards; 
+  animation-delay: 0.5s; 
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; 
+    transform: translateX(50px); 
+  }
+  100% {
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+/* Typewriter Effect for the strong text */
+.animated-text strong {
+  display: inline-flex;
+  overflow: hidden; 
+  white-space: nowrap;
+  border-right: 4px solid var(--clr-accent); /* Blinking cursor */
+  width: 0; 
+  animation: typewriter 2s steps(30) 1s forwards,
+  blink 0.65s step-end infinite,
+  remove-cursor 0.1s 3s forwards;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 69%; }
+}
+
+@keyframes remove-cursor {
+  0% { border-right: 4px solid #f9A602; }
+  100% { border-right: none; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+
+.btn {
+  display: inline-block;
+  padding: .5em 2.5em;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: var(--fw-bold);
+  transition: transform 200ms ease-in-out;
+
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+
+.section__title{
+  margin-bottom: .25em;
+
+}
+
+.section__subtitle--intro {
+  font-weight: var(--fw-reg);
+}
+
+.section__subtitle--intro strong {
+  display: block;
+}
+
+.section__subtitle{
+  margin: 0;
+  font-size: var(--fs-h3);
+
+}
+
+.section__subtitle--intro,
+.section__subtitle--about {
+
+  background: var(--clr-accent);
+  padding: .25em 1em;
+  font-family: var(--ff-secondary);
+  margin-bottom: 1em;
+}
+
+.section__subtitle--work {
+  color: var(--clr-accent);
+  font-weight: var(--fw-bold);
+  margin-bottom: 2em;
+}
+
+
+/* Header */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em; 
+}
+
+
+.logo {
+  max-width: 100px;
+
+
+}
+
+.nav {
+  position: fixed;
+  background: var(--clr-dark);
+  color: var(--clr-light);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  transform: translateX(100%);
+  transition: transform 250ms cubic-bezier(.5, 0, .5, 1)
+
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  color: inherit;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2);
+  text-decoration: none;;
+}
+
+.nav__link:hover{
+  color: var(--clr-accent)
+}
+
+.nav-toggle{
+  padding: .5em;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  z-index: 1000;
+
+}
+
+.nav-open .nav{
+  transform: translateX(0);
+
+}
+
+.nav-open .nav-toggle {
+  position: fixed;
+}
+
+.nav-open .hamburger {
+  transform: rotate(.625turn);
+}
+
+.nav-open .hamburger::before {
+  transform: rotate(90deg) translateX(-6px);
+}
+
+.nav-open .hamburger::after {
+  opacity: 0;
+}
+
+
+.hamburger {  
+  display: block;
+  position: relative;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  background: var(--clr-accent);
+  width: 2em;
+  height: 3px;
+  border-radius: 1em;
+  transition: transform 250ms ease-in-out;
+
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.hamburger::before{ top: 6px; }
+.hamburger::after{ bottom: 6px; }
+
+
