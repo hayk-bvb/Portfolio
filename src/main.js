@@ -12,14 +12,14 @@ renderer.setPixelRatio(window.devicePixelRatio);
 camera.position.set(0, 0, 70); // Move camera back to view larger object
 
 // 2️⃣ Geometry (Icosahedron)
-const geometry = new THREE.IcosahedronGeometry(20, 0); // Radius of 20
+const geometry = new THREE.IcosahedronGeometry(30, 0); // Radius of 20
 const material = new THREE.MeshStandardMaterial({ 
   color: 0xff0000, 
   wireframe: true, // Turn off default wireframe
 });
 const icosahedron = new THREE.Mesh(geometry, material);
 icosahedron.position.set(0, 0, 0); 
-icosahedron.scale.set(2, 2, 2); // Scale it up 2x
+icosahedron.scale.set(1.25, 1.5, 1.25);
 scene.add(icosahedron);
 
 const geometry2 = new THREE.IcosahedronGeometry(40, 0)
@@ -68,17 +68,17 @@ Array(200).fill().forEach(addStar);
 // 6️⃣ Animation Loop
 function animate() {
   requestAnimationFrame(animate);
-  icosahedron.rotation.x += 0.0001;
-  icosahedron.rotation.y += 0.0001;
-  icosahedron.rotation.z += 0.0001;
+  icosahedron.rotation.x += 0.00015;
+  icosahedron.rotation.y += 0.00015;
+  icosahedron.rotation.z += 0.00015;
 
-  wireframe.rotation.x += 0.002;
-  wireframe.rotation.y += 0.002;
-  wireframe.rotation.z += 0.002;
+  wireframe.rotation.x += 0.00175;
+  wireframe.rotation.y += 0.00175;
+  wireframe.rotation.z += 0.00175;
 
-  wireframe2.rotation.x -= 0.0001;
-  wireframe2.rotation.y -= 0.0001;
-  wireframe2.rotation.z -= 0.0001;
+  wireframe2.rotation.x -= 0.00015;
+  wireframe2.rotation.y -= 0.00015;
+  wireframe2.rotation.z -= 0.00015;
 
   renderer.render(scene, camera);
 }

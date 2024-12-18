@@ -7,33 +7,17 @@
   <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
-  <header>
-    <div class="logo"></div>
-    <button class="nav-toggle" aria-label="toggle navigation">
-      <span class="hamburger"></span>
-    </button>
-    <nav class="nav">
-      <ul class="nav__list">
-        <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
-        <li class="nav__item"><a href="#services" class="nav__link">My Services</a></li>
-        <li class="nav__item"><a href="#about" class="nav__link">About Me</a></li>
-        <li class="nav__item"><a href="#work" class="nav__link">My Work</a></li>
-      </ul>
-    </nav>
-  </header>
-  <section class="graphics3d">
-    <!-- Left Image Section -->
-    <div class="profile-image">
-      <img src="/img/polish_save.JPG" alt="Hayk Nazaryan">
-    </div>
-
-    <!-- Right Content Section -->
-    <div class="content">
+    <!-- Full-Page Section with 3D Background-->
+  <section class="hero-section">
       <canvas id="background"></canvas>
-      <h1 class="hero-text animated-text">Hi, I'm <strong>Hayk Nazaryan.</strong></h1>
-      <script type="module" src="/src/main.js"></script>
+      <div class = "profile-container">
+        <img src="img/polish_save.JPG" alt="Hayk Nazaryan Profile Picture" class="profile-image">   
+        <h1 class="hero-text animated-text">Hi, I'm <strong>Hayk Nazaryan.</strong></h1>
+
     </div>
   </section>
+
+<!-- Other sections below -->
   <section class="section">
     <h1 class="about_me">About &lt;<code>Me</code>/&gt;</h1>
     <p>Passionate coder who enjoys innovation and constant self-improvement.</p>
@@ -65,5 +49,7 @@
   <section class="certifications_section">
     <h1 class="about_me"> My &lt;<code3>Certifications</code3> /&gt;</h1>
   </section>
+
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
