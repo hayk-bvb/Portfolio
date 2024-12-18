@@ -15,21 +15,24 @@ camera.position.set(0, 0, 70); // Move camera back to view larger object
 const geometry = new THREE.IcosahedronGeometry(20, 0); // Radius of 20
 const material = new THREE.MeshStandardMaterial({ 
   color: 0xff0000, 
-  wireframe: true // Turn off default wireframe
+  wireframe: true, // Turn off default wireframe
 });
 const icosahedron = new THREE.Mesh(geometry, material);
 icosahedron.position.set(0, 0, 0); 
 icosahedron.scale.set(2, 2, 2); // Scale it up 2x
 scene.add(icosahedron);
 
+const geometry2 = new THREE.IcosahedronGeometry(40, 0)
+
 // 2️⃣.1 Edges for Thicker Wireframe
 const edges = new THREE.EdgesGeometry(geometry); // Get edges of geometry
-const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }); // White lines, thicker
+const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 1 }); // White lines, thicker
 const wireframe = new THREE.LineSegments(edges, lineMaterial);
 scene.add(wireframe);
 
+const edges2 = new THREE.EdgesGeometry(geometry2)
 const lineMaterial2 = new THREE.LineBasicMaterial({ color: 0x0000ff, linewidth: 3}); // White lines, thicker
-const wireframe2 = new THREE.LineSegments(edges, lineMaterial2);
+const wireframe2 = new THREE.LineSegments(edges2, lineMaterial2);
 
 scene.add(wireframe2)
 
@@ -73,6 +76,10 @@ function animate() {
   wireframe.rotation.y += 0.002;
   wireframe.rotation.z += 0.002;
 
+  wireframe2.rotation.x -= 0.0001;
+  wireframe2.rotation.y -= 0.0001;
+  wireframe2.rotation.z -= 0.0001;
+
   renderer.render(scene, camera);
 }
 animate();
@@ -81,8 +88,8 @@ animate();
 document.addEventListener('mousemove', (event) => {
   const mouseX = (event.clientX / window.innerWidth) * 2 - 1;
   const mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-  icosahedron.rotation.x = mouseY * 0.5;
-  icosahedron.rotation.y = mouseX * 0.5;
+  // icosahedron.rotation.x = mouseY * 0.5;
+  // icosahedron.rotation.y = mouseX * 0.5;
   wireframe.rotation.x = mouseY * 0.5;
   wireframe.rotation.y = mouseX * 0.5;
 });
