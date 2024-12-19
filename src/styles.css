@@ -316,7 +316,15 @@ section {
   50% { border-color: transparent; }
 }
 
-.projects_grid{
+.projects_grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.certification_cards {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -478,4 +486,60 @@ section {
 
 .github_button:hover svg path {
   fill: #181717;
+}
+
+
+.cert {
+  padding: 20px;
+  width: 430px;
+  min-height: 370px;
+  border-radius: 20px;
+  background: black;
+  box-shadow: 5px 5px 6px #6347FF,
+               -5px -5px 6px #6347FF;
+  transition: 0.4s;
+}
+
+.cert:hover {
+  translate: 0 -20px;
+}
+
+.cert-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: white;
+  margin: 15px 0 0 10px;
+}
+
+.cert-image {
+  min-height: 170px;
+  background-color: #c9c9c9;
+  border-radius: 15px;
+  box-shadow: inset 8px 8px 10px #6347FF,
+            inset -8px -8px 10px #6347FF;
+  max-height: 170px !important;
+  width: 90%;
+}
+
+.cert-image:hover {
+  outline: 2px solid #e8e8e8;
+
+}
+
+.cert-body {
+  color: white;
+  font-size: 12px;
+  font-weight: 50;
+}
+
+.footer {
+  float: right;
+  font-size: 11px;
+  color: white;
+  margin-top: 1rem;
+
+}
+
+.by-name {
+  font-weight: 700;
 }
