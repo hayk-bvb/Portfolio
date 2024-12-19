@@ -100,3 +100,17 @@ window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
 });
+
+// Select the rocket cursor element
+const rocketCursor = document.querySelector('.rocket-cursor');
+
+// Listen for mouse movement
+window.addEventListener('mousemove', (event) => {
+  const mouseX = event.pageX; // Use pageX instead of clientX
+  const mouseY = event.pageY; // Use pageY instead of clientY
+
+  // Update the position of the rocket cursor
+  rocketCursor.style.left = `${mouseX}px`;
+  rocketCursor.style.top = `${mouseY}px`;
+});
+

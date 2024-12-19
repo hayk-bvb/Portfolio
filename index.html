@@ -5,26 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
   <link rel="stylesheet" href="/src/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&family=VT323&family=Audiowide&display=swap" rel="stylesheet">
 </head>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    });
+  </script>
 <body>
+    <!-- Rocket Cursor-->
+    <div class="rocket-cursor">
+        <img src="img/rocket_cursor_two.png" alt="Rocketship">
+        <div class="flame"></div>
+      </div>
     <!-- Full-Page Section with 3D Background-->
   <section class="hero-section">
     <canvas id="background"></canvas>
 
-    <div class="cornercard top-left">
+    <a href="#about_me_section" class="cornercard top-left">
         <h2>About Me</h2>
-    </div>
-    <div class="cornercard top-right">
+    </a>
+    <a href="#projects_section" class="cornercard top-right">
         <h2>Projects</h2>
-    </div>
+    </a>
 
-    <div class="cornercard bottom-left">
-        <h2>Certifications</h2>
-    </div>
+    <a href="#certifications_section" class="cornercard bottom-left">
+        <h2 class="h2certification">Certifications</h2>
+    </a>
 
-    <div class="cornercard bottom-right">
-        <h2>Contact Me</h2>
-    </div>
+    <a href="#contact_me_section" class="cornercard bottom-right">
+        <h2 class="h2contactme">Contact Me</h2>
+    </a>
 
     <div class = "profile-container">
         <img src="img/polish_save.JPG" alt="Hayk Nazaryan Profile Picture" class="profile-image">   
@@ -34,12 +52,14 @@
   </section>
 
 <!-- Other sections below -->
-  <section class="section">
+  <section class="#about_me_section">
     <h1 class="about_me">About &lt;<code>Me</code>/&gt;</h1>
-    <p>Passionate coder who enjoys innovation and constant self-improvement.</p>
+    <p class="highlight">Passionate coder who enjoys innovation and constant self-improvement.</p>
+    <p>Excited about <code>NLP</code>, <code>LLMs</code> and <code>machine automation</code>.</p>
+    <p>Love sports ⚽️, fitness 🏋🏻 and travel 🌉.</p>
   </section>
 
-  <section class="projects_section">
+  <section class="#projects_section">
     <h1 class="about_me"> My &lt;<code2>Projects</code2>/&gt;</h1>
     <div class="card">
         <div class="card-content">
@@ -62,8 +82,12 @@
       </div>
   </section>
 
-  <section class="certifications_section">
+  <section class="#certifications_section">
     <h1 class="about_me"> My &lt;<code3>Certifications</code3> /&gt;</h1>
+  </section>
+
+  <section class="#contact_me_section">
+
   </section>
 
   <script type="module" src="/src/main.js"></script>
