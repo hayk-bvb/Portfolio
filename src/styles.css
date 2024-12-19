@@ -322,6 +322,8 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  gap: 20px 10px;
 }
 
 .certification_cards {
@@ -330,6 +332,8 @@ section {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  gap: 20px 30px;
 }
 
 .card {
