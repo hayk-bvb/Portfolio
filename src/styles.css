@@ -319,6 +319,9 @@ section {
 .projects_grid{
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .card {
@@ -326,12 +329,23 @@ section {
   flex-direction: row;
   position: relative;
   width: 320px;
-  height: 275px;
+  height: 320px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 32px;
   overflow: hidden;
   border-radius: 10px;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+
+}
+
+.card_dummy{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 320px;
+  height: 320px;
+  padding: 32px;
+  overflow: hidden;
 }
 
 .card-content {
@@ -356,11 +370,11 @@ section {
 .card-content .btn {
   color: #e8e8e8;
   position: absolute;
+  flex-direction: column;
+  align-items: flex-end;
   bottom: 10px;
   left: 20px;
   text-decoration: none;
-  flex-direction: column;
-  align-items: flex-end;
   padding: 10px;
   font-weight: 600;
   border: none;
@@ -379,7 +393,7 @@ section {
   height: 5px;
   background: #6347FF;
   z-index: -1;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  transition: all 2s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .card:hover::before {
@@ -428,3 +442,40 @@ section {
 }
 
 
+.github_button {
+  flex-direction: column;
+  position: absolute;
+  align-items: flex-end;
+  bottom: 10px;
+  right: 20px;
+  padding: 10px 15px;
+  gap: 15px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: 400ms;
+}
+
+.github_button .text {
+  color: #181717;
+  font-weight: 700;
+  font-size: 1em;
+  transition: 400ms;
+}
+
+.github_button svg path {
+  transition: 400ms;
+}
+
+.github_button:hover {
+  background-color: white;
+}
+
+.github_button:hover .text {
+  color: #6347FF;
+}
+
+.github_button:hover svg path {
+  fill: #181717;
+}
