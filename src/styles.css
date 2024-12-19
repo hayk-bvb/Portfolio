@@ -221,6 +221,12 @@ code3 {
 
 .about_me {
   font-size: var(--fs-h1) !important;
+  padding: 1rem;
+}
+
+.projects_heading{
+  font-size: var(--fs-h1) !important;
+  padding: 1rem 1rem !important;
 }
 
 .highlight {
@@ -237,9 +243,10 @@ section {
 }
 
 #projects_section {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 20px;
+  padding: 40px;
 }
 
 #about_me_section {
@@ -309,13 +316,17 @@ section {
   50% { border-color: transparent; }
 }
 
-.card {
-  position: relative;
+.projects_grid{
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
-  /* justify-content: center; */
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  position: relative;
   width: 320px;
+  height: 275px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   padding: 32px;
   overflow: hidden;
@@ -326,15 +337,15 @@ section {
 .card-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
   color: #e8e8e8;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 .card-content .heading {
-  font-weight: 700;
-  font-size: 32px;
+  font-weight: 1000 !important;
+  font-size: 25px;
   text-align: center;
 }
 
@@ -344,7 +355,12 @@ section {
 
 .card-content .btn {
   color: #e8e8e8;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
   text-decoration: none;
+  flex-direction: column;
+  align-items: flex-end;
   padding: 10px;
   font-weight: 600;
   border: none;
@@ -387,6 +403,12 @@ section {
 
 .card-content .btn:active {
   box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  #projects_grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
 }
 
 .rocket-cursor {
