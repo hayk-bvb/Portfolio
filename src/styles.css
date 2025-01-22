@@ -224,13 +224,18 @@ code3 {
   padding: 1rem;
 }
 
+.work_exp {
+  font-size: var(--fs-h1) !important;
+  padding: 1rem; 
+}
+
 .projects_heading{
   font-size: var(--fs-h1) !important;
   padding: 1rem 1rem !important;
 }
 
 .highlight {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 200;
 
 }
@@ -250,6 +255,14 @@ section {
 }
 
 .about_me_section {
+  padding: 1em 1em !important;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  font-size: 2rem !important;
+}
+
+.work_exp_section {
   padding: 1em 1em !important;
   position: relative;
   justify-content: center;
