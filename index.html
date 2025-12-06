@@ -6,6 +6,55 @@
   <title>HN Portfolio</title>
   <link rel="stylesheet" href="/src/styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&family=VT323&family=Audiowide&display=swap" rel="stylesheet">
+  <style>
+    /* Laser styles: short vertical beam that travels upward and fades */
+    .laser {
+      position: fixed;
+      pointer-events: none;
+      width: 3px;           /* thinner */
+      height: 30px;         /* shorter */
+      background: linear-gradient(180deg, rgba(255,130,130,1), rgba(255,170,170,0.9));
+      border-radius: 2px;
+      transform-origin: bottom center;
+      opacity: 1;
+      z-index: 9999;
+      will-change: transform, opacity;
+      left: 0;
+      top: 0;
+      /* CSS variable --travel will be set per-click to move the laser to the top */
+      --travel: -200px;
+    }
+
+    .laser.shoot {
+      animation: laser-move 0.9s cubic-bezier(.2,.9,.3,1) forwards;
+    }
+
+    @keyframes laser-move {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(var(--travel));
+        opacity: 0;
+      }
+    }
+
+    /* glowing tip */
+    .laser::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,220,220,1), rgba(255,120,120,0.3));
+      filter: blur(6px);
+      pointer-events: none;
+    }
+  </style>
 </head>
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -45,7 +94,7 @@
     </a>
 
     <div class = "profile-container">
-        <img src="img/polish_save.JPG" alt="Hayk Nazaryan Profile Picture" class="profile-image">   
+        <img src="img/polish_save.png" alt="Hayk Nazaryan Profile Picture" class="profile-image">   
         <h1 class="hero-text animated-text">Hi, I'm <strong>Hayk Nazaryan.</strong></h1>
 
     </div>
@@ -287,7 +336,7 @@
       
         <!-- Email -->
         <li class="icon-content">
-            <a href="mailto:hayk.nazaryan@mail.utoronto.ca" aria-label="Email" data-social="email" target="_blank">
+            <a href="mailto:hayk.naz0@gmail.com" aria-label="Email" data-social="email" target="_blank">
               <div class="filled"></div>
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
                 <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4z" fill="currentColor"/>
@@ -300,6 +349,58 @@
   </section>
 
   <script type="module" src="./src/main.js"></script>
+
+  <script>
+    // Laser effect on click: create a short .laser element whose bottom is
+    // positioned at the click point, then translate it upward and fade.
+    (function () {
+      const LASER_WIDTH = 3; // px (thin)
+      const LASER_HEIGHT = 30; // px (short)
+      const CLEANUP_MS = 1200; // fallback cleanup
+
+      document.addEventListener('click', function (e) {
+        try {
+          // Avoid creating lasers for clicks on form controls
+          const tag = (e.target && e.target.tagName) || '';
+          if (/INPUT|TEXTAREA|SELECT|OPTION|AUDIO|VIDEO/.test(tag)) return;
+
+          const laser = document.createElement('div');
+          laser.className = 'laser';
+
+          const left = e.clientX - Math.round(LASER_WIDTH / 2);
+          // place the element so its bottom aligns with the click Y
+          const top = e.clientY - LASER_HEIGHT;
+
+          laser.style.left = left + 'px';
+          laser.style.top = top + 'px';
+          laser.style.height = LASER_HEIGHT + 'px';
+
+          // compute travel so the laser top reaches the viewport top (0).
+          // starting top is `top`; to move it to 0, translateY should be -top.
+          // add a small overshoot (10px) so it clears the edge nicely.
+          const overshoot = 10;
+          const travel = -(top + overshoot); // negative px value moves the beam up
+          // set CSS variable --travel to the negative px value for translateY
+          laser.style.setProperty('--travel', `${travel}px`);
+
+          document.body.appendChild(laser);
+
+          // trigger animation on next frame
+          requestAnimationFrame(() => laser.classList.add('shoot'));
+
+          // remove element when animation ends
+          laser.addEventListener('animationend', () => {
+            if (laser.parentNode) laser.parentNode.removeChild(laser);
+          }, { once: true });
+
+          // fallback cleanup
+          setTimeout(() => { if (laser.parentNode) laser.parentNode.removeChild(laser); }, CLEANUP_MS);
+        } catch (err) {
+          console.error('laser click error', err);
+        }
+      }, { passive: true });
+    })();
+  </script>
 
 
 </body>
