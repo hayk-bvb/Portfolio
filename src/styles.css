@@ -340,13 +340,12 @@ section {
 }
 
 .certification_cards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  /* responsive columns: try to fit as many 430px cards as possible */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 430px));
+  gap: 24px;
   padding: 20px;
-  gap: 20px 30px;
+  justify-content: center; /* keep overall centered while keeping rows left-aligned */
 }
 
 .card {
