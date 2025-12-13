@@ -54,6 +54,51 @@
       filter: blur(6px);
       pointer-events: none;
     }
+    /* Work entries: match site-wide styling (no boxed cards) */
+    .work-list { display: flex; flex-direction: column; gap: 20px; margin-top: 24px; align-items: stretch; }
+    @media(min-width:900px){ .work-list { gap: 26px; } }
+    /* Two-column layout on wide screens: logo/meta on left, desc/bullets on right */
+    @media(min-width:900px){
+      .work-entry { display:flex; gap: 20px; align-items:flex-start; padding: 18px 12px; }
+      .work-head { width: 340px; flex-shrink:0; display:flex; align-items:center; gap:14px; }
+      .work-body { flex:1; }
+    }
+
+    .work-entry { background: transparent; padding: 12px; border-radius: 8px; text-align: left; transition: transform .22s ease, box-shadow .22s ease; }
+    .work-head { display:flex; align-items:center; gap:14px; margin-bottom:8px; }
+    .work-logo { width:72px; height:72px; flex-shrink:0; border-radius:10px; border: 2px solid rgba(99,71,255,0.06); background: rgba(255,255,255,0.02); background-size: contain; background-position:center; background-repeat:no-repeat; }
+    .work-logo.tinted { background-image: none; background-color: var(--clr-accent); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center; mask-size: contain; mask-repeat: no-repeat; mask-position: center; }
+    .work-meta .work-title { margin:0; font-size:1.15rem; color: #fff; font-family: 'Orbitron', sans-serif; }
+    .work-role { margin:0; font-size:0.9rem; opacity:0.85; color: #dcdcdc; }
+    .work-body .work-desc { margin:10px 0; font-size:0.95rem; color:#e6e6e6; }
+    .work-bullets { margin:0; padding-left:22px; color:#e0e0e0; list-style:none; }
+    .work-bullets li { position:relative; padding-left:18px; margin-bottom:8px; line-height:1.45; }
+    .work-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      /* use site purple */
+      background: #6347FF;
+      box-shadow: 0 0 12px rgba(99,71,255,0.18);
+      transform: translateY(-50%);
+    }
+    .work-bullets li code { background: transparent; }
+
+    /* Hover reveal: subtle glow and lift */
+    .work-entry:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(99,71,255,0.08); }
+    .work-entry:hover .work-logo { box-shadow: 0 6px 18px rgba(99,71,255,0.14); border-color: rgba(99,71,255,0.22); }
+    /* Modal: Work in progress */
+    .wip-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:10050; opacity:0; pointer-events:none; transition:opacity .18s ease; }
+    .wip-overlay.show { opacity:1; pointer-events:auto; }
+    .wip-modal { background: linear-gradient(180deg,#07182E,#0b253b); color: #fff; padding: 28px 22px; border-radius: 12px; width: min(420px, 90%); box-shadow: 0 20px 60px rgba(0,0,0,0.6); transform: translateY(8px); transition: transform .2s ease; text-align:center; }
+    .wip-overlay.show .wip-modal { transform: translateY(0); }
+    .wip-modal h2 { margin:0 0 8px 0; font-family:'Orbitron', sans-serif; color:#fff; font-size:1.25rem; }
+    .wip-modal p { margin:0 0 12px 0; color:#e6e6e6; }
+    .wip-close { background: transparent; border: none; color: #cfcfcf; font-size: 22px; position: absolute; right: 14px; top: 10px; cursor: pointer; }
   </style>
 </head>
 <script>
@@ -79,7 +124,7 @@
     <canvas id="background"></canvas>
 
     <a href="#about_me_section" class="cornercard top-left">
-        <h2>Work EXP</h2>
+        <h2>Work Exp</h2>
     </a>
     <a href="#projects_section" class="cornercard top-right">
         <h2>Projects</h2>
@@ -110,7 +155,60 @@
 
 
   <section id="work_exp_section">
-    <h1 class="work_exp"> Work &lt;<code>EXP</code>/&gt;</h1>
+    <h1 class="work_exp"> Work &lt;<code>Exp</code>/&gt;</h1>
+
+    <div class="work-list">
+      <!-- Work entry 1 -->
+      <article class="work-entry">
+          <div class="work-head">
+            <!-- Use a background element for logos so we can tint SVGs via mask -->
+            <div class="work-logo" data-src="img/jamcrm.png" aria-hidden="true"></div>
+            <div class="work-meta">
+              <h3 class="work-title">JAM CRM</h3>
+              <p class="work-role">Backend Developer — <span class="work-dates">05/2025 — Present</span></p>
+            </div>
+          </div>
+          <!-- <p class="work-desc">Deloyed full-stack internal tools on the cloud with AWS for various clients.
+Incorporating services such as Lambda, S3, SES, SecretsManager and more.</p> -->
+          <ul class="work-bullets">
+            <li>Deployed full-stack internal tools to AWS for various client, leveraging Lambda, S3, SES, Secrets Manager, and other services.</li>
+            <li>Deployed custom GPTs using OpenAI to streamline internal business and creative workflows.</li>
+            <li>Maintained and optimized legacy ETL pipelines; containerized the service with Docker to improve deployment consistency.</li>
+        </ul>
+      </article>
+
+      <!-- Work entry 2 -->
+      <article class="work-entry">
+          <div class="work-head">
+            <div class="work-logo" data-src="img/safran.png" aria-hidden="true"></div>
+            <div class="work-meta">
+              <h3 class="work-title">Safran</h3>
+              <p class="work-role">AI Engineer Intern — <span class="work-dates">01/2024 — 01/2025</span></p>
+            </div>
+          </div>
+          <ul class="work-bullets">
+            <li>Developed and led an AI engineering assistant tool JetSearch; An LLM bot for Safran R&D</li>
+            <li>Implemented a RAG + Agent pipeline over thousands of engineering knowledge files using LangChain and Hugging Face with Python.</li>
+          </ul>
+      </article>
+
+      <!-- Work entry 3 -->
+      <article class="work-entry">
+          <div class="work-head">
+            <div class="work-logo" data-src="img/safran.png" aria-hidden="true"></div>
+            <div class="work-meta">
+              <h3 class="work-title">Safran</h3>
+              <p class="work-role">Software Engineer Intern — <span class="work-dates">09/2023 — 01/2024</span></p>
+            </div>
+          </div>
+          <ul class="work-bullets">
+            <li>Created an automated OOP pipeline for parsing Stress & Optimization data from several types of
+files .txt, .xml, .csv into a Python dictionary format. Later used by the testing and Validation team for
+unit testing.</li>
+            <li>Tasked with overseeing the refractor of a large front-end codebase, over 10,000 lines of code</li>
+          </ul>
+      </article>
+    </div>
 
   </section>
 
@@ -119,6 +217,32 @@
     <h1 class="projects_heading"> My &lt;<code2>Projects</code2>/&gt;</h1>
 
     <div class="projects_grid">
+      <div class="card">
+            <div class="card-content">
+                <p class="heading">"CollinAI" ⚽️👨🏻‍⚖️</p>
+                <p class="para">
+                    A full-stack chatbot intended to help query UEFA Financial Fair Play regulation quickly using RAG. Containerized with Docker and soon to be deployed on AWS with ECR.
+                </p>
+                <button class="btn">Read more</button>
+
+                <a href="https://github.com/hayk-bvb/CollinAI" target="_blank">
+                    <button class="github_button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 0.296997C5.37 0.296997 0 5.67 0 12.297C0 17.6 3.438 22.097 8.205 23.682C8.805 23.795 9.025 23.424 
+                        9.025 23.105C9.025 22.82 9.015 22.065 9.01 21.065C5.672 21.789 4.968 19.455 4.968 19.455C4.422 18.07 3.633 17.7 3.633 
+                        17.7C2.546 16.956 3.717 16.971 3.717 16.971C4.922 17.055 5.555 18.207 5.555 18.207C6.625 20.042 8.364 19.512 9.05 19.205C9.158 
+                        18.429 9.467 17.9 9.81 17.6C7.145 17.3 4.344 16.268 4.344 11.67C4.344 10.36 4.809 9.29 5.579 8.45C5.444 8.147 5.039 6.927 5.684 
+                        5.274C5.684 5.274 6.689 4.952 8.984 6.504C9.944 6.237 10.964 6.105 11.984 6.099C13.004 6.105 14.024 6.237 14.984 6.504C17.264 
+                        4.952 18.269 5.274 18.269 5.274C18.914 6.927 18.509 8.147 18.389 8.45C19.154 9.29 19.619 10.36 19.619 11.67C19.619 16.28 16.814 
+                        17.295 14.144 17.59C14.564 17.95 14.954 18.686 14.954 19.81C14.954 21.416 14.939 22.706 14.939 23.096C14.939 23.411 15.149 23.786 
+                        15.764 23.666C20.565 22.092 24 17.592 24 12.297C24 5.67 18.627 0.296997 12 0.296997Z" fill="white"></path>
+                        </svg>
+                    </button>
+                </a>
+
+            </div>
+
+        </div>
         <div class="card">
             <div class="card-content">
                 <p class="heading">"TekFinder" ⚽️📊</p>
@@ -235,7 +359,6 @@
         <!-- Dummy cards, will be filled later-->
         <div class="card_dummy"></div>
         <div class="card_dummy"></div>
-        <div class="card_dummy"></div>
 
     </div>
   </section>
@@ -243,6 +366,17 @@
   <section id="certifications_section">
     <h1 class="about_me"> My &lt;<code3>Certifications</code3>/&gt;</h1>
     <div class="certification_cards">
+      <div class="cert">
+            <div>
+                <img src="img/CCP.png" class="cert-image">
+                </a>
+            </div>
+            <p class="cert-title">AWS Certified Cloud Practitioner</p>
+            <p class="cert-body">
+                Foundational understanding of AWS Cloud concepts, services, security, architecture, pricing, and support.
+            </p>
+            <p class="cert-footer"><span class="cert-by-name">Completed on</span> <span class="date">08/25</span></p>
+        </div>
         <div class="cert">
             <div>
                 <a href="https://coursera.org/share/919960b4f0eede0df409973c4c8e71a8" target="_blank">
@@ -399,6 +533,88 @@
           console.error('laser click error', err);
         }
       }, { passive: true });
+    })();
+  </script>
+
+  <script>
+    // Logo loader: converts elements with `data-src` into background logos.
+    // If the source ends with .svg we apply mask tinting so the logo uses the accent color.
+    (function () {
+      const logos = document.querySelectorAll('.work-logo[data-src]');
+      logos.forEach(el => {
+        const src = el.getAttribute('data-src');
+        if (!src) return;
+
+        // set CSS variable for background usage
+        el.style.setProperty('--logo', `url('${src}')`);
+
+        if (/\.svg($|\?)/i.test(src)) {
+          // Use mask approach for SVG tinting where supported
+          // set -webkit-mask-image / mask-image via style (some browsers require prefix)
+          el.classList.add('tinted');
+          el.style.setProperty('-webkit-mask-image', `url('${src}')`);
+          el.style.setProperty('mask-image', `url('${src}')`);
+          el.style.setProperty('-webkit-mask-size', 'contain');
+          el.style.setProperty('mask-size', 'contain');
+          el.style.setProperty('-webkit-mask-repeat', 'no-repeat');
+          el.style.setProperty('mask-repeat', 'no-repeat');
+          el.style.setProperty('-webkit-mask-position', 'center');
+          el.style.setProperty('mask-position', 'center');
+        } else {
+          // raster images -> use as background-image
+          el.style.backgroundImage = `url('${src}')`;
+        }
+      });
+    })();
+  </script>
+
+  <!-- Work-in-progress modal -->
+  <div id="wip-overlay" class="wip-overlay" aria-hidden="true">
+    <div class="wip-modal" role="dialog" aria-modal="true" aria-labelledby="wip-title">
+      <button class="wip-close" aria-label="Close modal">×</button>
+      <h2 id="wip-title">Work in progress</h2>
+      <p>This content is not available yet. Stay tuned — coming soon!</p>
+    </div>
+  </div>
+
+  <script>
+    // Show a "Work in progress" modal when any "Read more" button in the projects section is clicked.
+    (function () {
+      const overlay = document.getElementById('wip-overlay');
+      const closeBtn = overlay && overlay.querySelector('.wip-close');
+      let hideTimer = null;
+
+      function showWip() {
+        if (!overlay) return;
+        overlay.classList.add('show');
+        overlay.setAttribute('aria-hidden', 'false');
+        // auto-hide after 1.6s
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(hideWip, 1600);
+      }
+
+      function hideWip() {
+        if (!overlay) return;
+        overlay.classList.remove('show');
+        overlay.setAttribute('aria-hidden', 'true');
+        clearTimeout(hideTimer);
+      }
+
+      // attach click handlers to project "Read more" buttons
+      document.addEventListener('DOMContentLoaded', () => {
+        const buttons = document.querySelectorAll('#projects_section .btn');
+        buttons.forEach(b => b.addEventListener('click', (e) => {
+          e.preventDefault();
+          showWip();
+        }));
+      });
+
+      // overlay click and close button
+      if (overlay) {
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) hideWip(); });
+        if (closeBtn) closeBtn.addEventListener('click', hideWip);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideWip(); });
+      }
     })();
   </script>
 
